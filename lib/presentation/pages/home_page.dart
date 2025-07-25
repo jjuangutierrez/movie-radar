@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieradar/core/tmdb_urls.dart';
-import 'package:movieradar/presentation/widgets/movie.row.dart';
+import 'package:movieradar/presentation/widgets/movie_row.dart';
+import 'package:movieradar/presentation/widgets/random_movie_header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,6 +16,10 @@ class HomePage extends StatelessWidget {
           children: const [
             Padding(
               padding: EdgeInsets.only(bottom: 24),
+              child: RandomMovieHeader(moviesUrl: TmdbUrls.trending),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 24),
               child: MovieRow(
                 moviesUrl: TmdbUrls.topRated,
                 heading: 'Top rated',
@@ -27,11 +32,13 @@ class HomePage extends StatelessWidget {
                 heading: 'Trending',
               ),
             ),
-            MovieRow(
-              moviesUrl: TmdbUrls.netflixOriginals,
-              heading: 'Netflix originals',
+            Padding(
+              padding: EdgeInsets.only(bottom: 24),
+              child: MovieRow(
+                moviesUrl: TmdbUrls.netflixOriginals,
+                heading: 'Netflix originals',
+              ),
             ),
-            MovieRow(moviesUrl: TmdbUrls.action, heading: 'Action'),
           ],
         ),
       ),

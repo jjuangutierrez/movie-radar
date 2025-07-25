@@ -37,7 +37,7 @@ class _MovieRowState extends State<MovieRow> {
           ),
         ),
         SizedBox(
-          height: 200,
+          height: 210,
           child: FutureBuilder<List<MediaModel>>(
             future: _futureMovies,
             builder: (context, snapshot) {
