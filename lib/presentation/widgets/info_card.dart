@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieradar/data/models/media_model.dart';
+import 'package:movieradar/presentation/pages/details_page.dart';
 
 class InfoCard extends StatelessWidget {
   final MediaModel movie;
@@ -21,7 +22,6 @@ class InfoCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Imagen
                   SizedBox(
                     width: 120,
                     child: ClipRRect(
@@ -43,12 +43,10 @@ class InfoCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  // Info + botones
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Título
                         Text(
                           movie.displayTitle,
                           style: const TextStyle(
@@ -60,7 +58,6 @@ class InfoCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 8),
-                        // Descripción
                         Expanded(
                           child: Text(
                             movie.overview ?? 'No description available',
@@ -73,14 +70,21 @@ class InfoCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        // Botones
                         Wrap(
                           spacing: 8,
                           runSpacing: 8,
                           alignment: WrapAlignment.end,
                           children: [
                             ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailsPage(movie: movie),
+                                  ),
+                                );
+                              },
                               icon: const Icon(Icons.play_arrow, size: 18),
                               label: const Text('Play'),
                               style: ElevatedButton.styleFrom(

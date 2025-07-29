@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:movieradar/data/models/media_model.dart';
 import 'package:movieradar/data/services/tmdb_service.dart';
+import 'package:movieradar/presentation/pages/details_page.dart';
 import 'package:movieradar/presentation/widgets/info_card.dart';
 
 class RandomMovieHeader extends StatefulWidget {
@@ -59,7 +60,7 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
                 // Imagen de fondo
                 Positioned.fill(
                   child: Image.network(
-                    selectedMovie.thumbnailSmall,
+                    selectedMovie.thumbnailUrl,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
@@ -112,7 +113,15 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
                         Row(
                           children: [
                             ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        DetailsPage(movie: selectedMovie),
+                                  ),
+                                );
+                              },
                               icon: const Icon(Icons.play_arrow),
                               label: const Text('Play'),
                               style: ElevatedButton.styleFrom(
