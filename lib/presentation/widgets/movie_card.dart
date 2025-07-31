@@ -13,7 +13,7 @@ class MovieCard extends StatelessWidget {
       onTap: () {
         showDialog(
           context: context,
-          builder: (context) => InfoCard(movie: movie),
+          builder: (context) => InfoCard(movie: movie), // ¡Solo movie!
         );
       },
       child: SizedBox(

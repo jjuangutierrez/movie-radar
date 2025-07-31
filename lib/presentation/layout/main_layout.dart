@@ -12,15 +12,10 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int currentIndexPage = 0;
 
-  final List<Widget> pages = const [
-    HomePage(),
-    GamesPage(),
-    NewandhotPage(),
-    DownloadsPage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [HomePage(), SearchPage(), MyListPage()];
+
     return Scaffold(
       body: pages[currentIndexPage],
       bottomNavigationBar: MainNavbar(

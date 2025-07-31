@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movieradar/providers/movies_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:movieradar/data/models/media_model.dart';
 import 'package:movieradar/presentation/pages/details_page.dart';
 
@@ -78,7 +80,7 @@ class InfoCard extends StatelessWidget {
                             ElevatedButton.icon(
                               onPressed: () {
                                 Navigator.push(
-                                  (context),
+                                  context,
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         DetailsPage(movie: movie),
@@ -99,7 +101,19 @@ class InfoCard extends StatelessWidget {
                               ),
                             ),
                             OutlinedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<MovieProvider>().addMovie(movie);
+                                Navigator.pop(context);
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      '${movie.displayTitle} added to your list',
+                                    ),
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                              },
                               icon: const Icon(Icons.add, size: 18),
                               label: const Text('Add'),
                               style: OutlinedButton.styleFrom(

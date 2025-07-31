@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:movieradar/providers/movies_provider.dart';
 import 'package:movieradar/data/models/media_model.dart';
 import 'package:movieradar/data/services/tmdb_service.dart';
 import 'package:movieradar/presentation/pages/details_page.dart';
 import 'package:movieradar/presentation/widgets/info_card.dart';
+import 'package:provider/provider.dart';
 
 class RandomMovieHeader extends StatefulWidget {
   final String moviesUrl;
@@ -57,7 +59,6 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
             borderRadius: BorderRadius.circular(12),
             child: Stack(
               children: [
-                // Imagen de fondo
                 Positioned.fill(
                   child: Image.network(
                     selectedMovie.thumbnailUrl,
@@ -76,7 +77,6 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
                     },
                   ),
                 ),
-                // Gradiente overlay
                 Positioned.fill(
                   child: Container(
                     decoration: BoxDecoration(
@@ -138,8 +138,9 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
                               onPressed: () {
                                 showDialog(
                                   context: context,
-                                  builder: (context) =>
-                                      InfoCard(movie: selectedMovie),
+                                  builder: (context) => InfoCard(
+                                    movie: selectedMovie,
+                                  ), // ¡Sin callbacks!
                                 );
                               },
                               icon: const Icon(Icons.info_outline),
@@ -155,7 +156,20 @@ class _RandomMovieHeaderState extends State<RandomMovieHeader> {
                             ),
                             const SizedBox(width: 12),
                             OutlinedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                // Acceso directo al provider
+                                context.read<MovieProvider>().addMovie(
+                                  selectedMovie,
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      '${selectedMovie.displayTitle} added to your list',
+                                    ),
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                              },
                               icon: const Icon(Icons.add),
                               label: const Text('Add List'),
                               style: OutlinedButton.styleFrom(

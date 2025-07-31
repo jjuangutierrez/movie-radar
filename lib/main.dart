@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:movieradar/providers/movies_provider.dart';
 import 'package:movieradar/presentation/layout/main_layout.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MovieProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MovieRadar',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const MainLayout(),
+      title: 'Movie Radar',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      home: MainLayout(),
     );
   }
 }

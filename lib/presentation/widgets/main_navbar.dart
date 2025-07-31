@@ -13,14 +13,13 @@ class MainNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 24, 24, 24),
       selectedIndex: currentIndex,
       onDestinationSelected: onDestinationSelected,
       destinations: const [
         NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.gamepad), label: 'Games'),
-        NavigationDestination(icon: Icon(Icons.whatshot), label: 'New & Hot'),
-        NavigationDestination(icon: Icon(Icons.download), label: 'Downloads'),
+        NavigationDestination(icon: Icon(Icons.search), label: 'Search'),
+        NavigationDestination(icon: Icon(Icons.plus_one), label: 'My List'),
       ],
     );
   }
