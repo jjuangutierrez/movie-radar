@@ -5,6 +5,8 @@ El proyecto está construido siguiendo **buenas prácticas de desarrollo**, con 
 
 > 💡 El objetivo de este proyecto es servir como referencia educativa para otros desarrolladores que quieran aprender sobre Flutter, organización de proyectos y consumo de APIs en aplicaciones móviles.
 
+En esta aplicación puedes descubrir las últimas tendencias en películas, explorar sus categorías, buscar tus títulos favoritos, ver información detallada y trailers, e incluso guardar películas en tu lista para disfrutarlas más tarde.
+
 ## Cómo usar?
 
 1. Clona este repositorio.  
