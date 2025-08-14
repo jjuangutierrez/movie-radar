@@ -10,8 +10,14 @@ El proyecto está construido siguiendo **buenas prácticas de desarrollo**, con 
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/mr1.png" alt="Pantalla principal" width="250"/>
-  <img src="screenshots/mr2.png" alt="Pantalla de búsqueda" width="250"/>
-  <img src="screenshots/mr3.png" alt="Resultados de búsqueda" width="250"/>
-  <img src="screenshots/mr4.png" alt="Detalle de película" width="250"/>
+  <img src="screenshots/mr1.png" alt="Pantalla principal" width="300"/>
+</p>
+<p align="center">
+  <img src="screenshots/mr2.png" alt="Pantalla de búsqueda" width="300"/>
+</p>
+<p align="center">
+  <img src="screenshots/mr3.png" alt="Resultados de búsqueda" width="300"/>
+</p>
+<p align="center">
+  <img src="screenshots/mr4.png" alt="Detalle de película" width="300"/>
 </p>
